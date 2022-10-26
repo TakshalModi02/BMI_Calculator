@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'variables.dart';
 import 'card.dart';
 import 'outputPage.dart';
+import 'brain.dart';
 
 class InputPage extends StatefulWidget {
   const InputPage({Key? key}) : super(key: key);
@@ -233,8 +234,9 @@ class _InputPageState extends State<InputPage> {
               flex: (fc_card ~/ 2) - 1,
               child: GestureDetector(
                 onTap: () {
+                  Brain brain = Brain(weight, height);
                   Navigator.push(context, MaterialPageRoute(
-                      builder: (context) => const SecondPage()));
+                      builder: (context) => SecondPage(brain.getResult(), brain.calculateBMI(), brain.getInterpretation())));
                 },
                   child: Container(
                     color: bottom_bar_color,

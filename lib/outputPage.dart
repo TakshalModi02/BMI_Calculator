@@ -2,13 +2,23 @@ import 'package:flutter/material.dart';
 import 'variables.dart';
 
 class SecondPage extends StatefulWidget {
-  const SecondPage({Key? key}) : super(key: key);
+
+  const SecondPage(this.result, this.bmi, this.interpretation, {super.key});
+  final String result;
+  final String bmi;
+  final String interpretation;
 
   @override
-  State<SecondPage> createState() => _SecondPageState();
+  State<SecondPage> createState() => _SecondPageState(result, bmi, interpretation);
 }
 
 class _SecondPageState extends State<SecondPage> {
+
+  _SecondPageState(this.result, this.bmi, this.interpretation);
+  final String result;
+  final String bmi;
+  final String interpretation;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,7 +60,17 @@ class _SecondPageState extends State<SecondPage> {
                         Expanded(
                           flex: 15,
                           child: Container(
+                            width: double.infinity,
                             color: active_card_color,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Container(child: Text(result, style: TextStyle(color: Colors.green, fontSize: 20),),),
+                                Container(child: Text(bmi, style: TextStyle(color: Colors.white, fontSize: 80, fontWeight: FontWeight.w900),),),
+                                Container(child: Center(child: Text(interpretation, style: TextStyle(fontSize: 20),textAlign: TextAlign.center,)),margin: EdgeInsets.all(37))
+                              ],
+                            ),
                           ),
                         ),
                         Expanded(
